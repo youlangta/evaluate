@@ -1,0 +1,16 @@
+server:
+  port: 9095
+
+#集成mysql数据库的配置
+spring:
+  datasource:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    #url: jdbc:mysql://49.233.196.166:3306/jfm?serverTimezone=UTC
+    url: jdbc:mysql://localhost:3306/evaluate?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
+    username: root
+    password: root
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    show-sql: true
+    hibernate:
+      ddl-auto: update
