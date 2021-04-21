@@ -1,3 +1,7 @@
+evaluate:
+  smallCateType:
+    num: 1 #每个小类测评试题个数
+
 server:
   port: 9095
 
@@ -8,7 +12,7 @@ spring:
     #url: jdbc:mysql://49.233.196.166:3306/jfm?serverTimezone=UTC
     url: jdbc:mysql://localhost:3306/evaluate?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
     username: root
-    password: root
+    password:
   jpa:
     database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
     show-sql: true

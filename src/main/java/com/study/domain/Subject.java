@@ -1,8 +1,13 @@
 package com.study.domain;
 
+import com.alibaba.fastjson.JSON;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 
+/**
+ * 测评试题
+ */
 @Entity
 @Table(name = "T_SUBJECT")
 public class Subject {
@@ -30,8 +35,8 @@ public class Subject {
     @Column(name = "big_category_id")
     @NotEmpty
     private String bigCategoryId;//大类
-
-
+    @Transient
+    private int evaluateAnswer = -1;//测评结果答案
     public int getId() {
         return id;
     }
@@ -110,5 +115,13 @@ public class Subject {
 
     public void setBigCategoryId(String bigCategoryId) {
         this.bigCategoryId = bigCategoryId;
+    }
+
+    public int getEvaluateAnswer() {
+        return evaluateAnswer;
+    }
+
+    public void setEvaluateAnswer(int evaluateAnswer) {
+        this.evaluateAnswer = evaluateAnswer;
     }
 }

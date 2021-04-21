@@ -3,6 +3,9 @@ package com.study.domain;
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 
+/**
+ * 小类
+ */
 @Entity
 @Table(name = "T_SMALL_CATEGORY")
 public class SmallCategory {

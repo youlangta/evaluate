@@ -3,6 +3,9 @@ package com.study.domain;
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 
+/**
+ * 用户
+ */
 @Entity
 @Table(name = "T_USER")
 public class User {
