@@ -7,16 +7,17 @@ import java.util.List;
  */
 public class EvaluatePaper {
 
-    private String bigCategoryId;//测评大类
+    private int bigCategoryId;//测评大类
     private String username;//用户名
     private String evaluateTime;//测评时间
     private List<Subject> subjects;//测评试题
     private List<SmallCategory> smallCategorys;//小类种类
-    public String getBigCategoryId() {
+
+    public int getBigCategoryId() {
         return bigCategoryId;
     }
 
-    public void setBigCategoryId(String bigCategoryId) {
+    public void setBigCategoryId(int bigCategoryId) {
         this.bigCategoryId = bigCategoryId;
     }
 

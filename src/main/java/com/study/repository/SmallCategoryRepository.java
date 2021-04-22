@@ -11,10 +11,10 @@ import java.util.List;
 
 @Repository
 @Transactional
-public interface SmallCategoryRepository extends JpaRepository<SmallCategory, String> {
+public interface SmallCategoryRepository extends JpaRepository<SmallCategory, Integer> {
     @Query("select s from SmallCategory s where s.bigCategoryId = :bigCategoryId")
-    List<SmallCategory> queryByBigCategory(@Param("bigCategoryId")String bigCategoryId);
+    List<SmallCategory> queryByBigCategory(@Param("bigCategoryId")int bigCategoryId);
 
     @Query("delete from SmallCategory s where s.bigCategoryId = :bigCategoryId")
-    void deleteByBigCategory(@Param("bigCategoryId")String bigCategoryId);
+    void deleteByBigCategory(@Param("bigCategoryId")int bigCategoryId);
 }

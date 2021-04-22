@@ -31,10 +31,10 @@ public class Subject {
     private int subjectAnswer;//试题答案
     @Column(name = "small_category_id")
     @NotEmpty
-    private String smallCategoryId;//小类
+    private int smallCategoryId;//小类
     @Column(name = "big_category_id")
     @NotEmpty
-    private String bigCategoryId;//大类
+    private int bigCategoryId;//大类
     @Transient
     private int evaluateAnswer = -1;//测评结果答案
     public int getId() {
@@ -101,19 +101,19 @@ public class Subject {
         this.subjectAnswer = subjectAnswer;
     }
 
-    public String getSmallCategoryId() {
+    public int getSmallCategoryId() {
         return smallCategoryId;
     }
 
-    public void setSmallCategoryId(String smallCategoryId) {
+    public void setSmallCategoryId(int smallCategoryId) {
         this.smallCategoryId = smallCategoryId;
     }
 
-    public String getBigCategoryId() {
+    public int getBigCategoryId() {
         return bigCategoryId;
     }
 
-    public void setBigCategoryId(String bigCategoryId) {
+    public void setBigCategoryId(int bigCategoryId) {
         this.bigCategoryId = bigCategoryId;
     }
 

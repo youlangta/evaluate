@@ -11,20 +11,20 @@ import java.util.List;
 @Table(name = "T_BIG_CATEGORY")
 public class BigCategory {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "big_category_id")
-    private String bigCategoryId;
+    private int bigCategoryId;
     @Column(name = "big_category_name")
     @NotEmpty
     private String bigCategoryName;
     @Transient
     private List<SmallCategory> smallCategories;
 
-    public String getBigCategoryId() {
+    public int getBigCategoryId() {
         return bigCategoryId;
     }
 
-    public void setBigCategoryId(String bigCategoryId) {
+    public void setBigCategoryId(int bigCategoryId) {
         this.bigCategoryId = bigCategoryId;
     }
 

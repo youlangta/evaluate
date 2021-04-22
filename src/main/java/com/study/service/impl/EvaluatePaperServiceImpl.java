@@ -35,7 +35,7 @@ public class EvaluatePaperServiceImpl implements IEvaluatePaperService {
     private EvaluateScoreRepository evaluateScoreRepository;
 
     @Override
-    public EvaluatePaper createNew(String bigCategoryId) {
+    public EvaluatePaper createNew(Integer bigCategoryId) {
         Random random = new Random();
         EvaluatePaper evaluatePaper = new EvaluatePaper();
         List<Subject> paperSubjects = new LinkedList<>();
@@ -44,7 +44,7 @@ public class EvaluatePaperServiceImpl implements IEvaluatePaperService {
         BigCategory bigCategory = bigCategoryRepository.findById(bigCategoryId).get();
         bigCategory.setSmallCategories(smallCategoryRepository.queryByBigCategory(bigCategory.getBigCategoryId()));
         List<Subject> subjects = subjectRepository.queryByBigCateroy(bigCategoryId);
-        Map<String, List<Subject>> smallSubjectMap = subjects.stream()
+        Map<Integer, List<Subject>> smallSubjectMap = subjects.stream()
                 .collect(Collectors.toMap(
                         subject -> subject.getSmallCategoryId(),
                         subject -> {
@@ -62,7 +62,7 @@ public class EvaluatePaperServiceImpl implements IEvaluatePaperService {
 
 
         for(SmallCategory smallCategory : smallCategories){
-            String smallCategoryId = smallCategory.getSmallCategoryId();
+            Integer smallCategoryId = smallCategory.getSmallCategoryId();
             List<Subject>  smallSubjects =   smallSubjectMap.getOrDefault(smallCategoryId,new ArrayList<>());
             for(int i =0;i<smallCateTypeEvaluateNum;i++){
                 if(smallCategories.isEmpty()){
@@ -82,7 +82,7 @@ public class EvaluatePaperServiceImpl implements IEvaluatePaperService {
                 ,evaluatePaper.getEvaluateTime(),evaluatePaper.getUsername());
         evaluateRecordRepository.saveAndFlush(evaluateRecord);
         List<Subject> subjects = evaluatePaper.getSubjects();
-        Map<String, List<Subject>> smallSubjectMap = subjects.stream()
+        Map<Integer, List<Subject>> smallSubjectMap = subjects.stream()
                 .collect(Collectors.toMap(
                         subject -> subject.getSmallCategoryId(),
                         subject -> {
@@ -96,10 +96,10 @@ public class EvaluatePaperServiceImpl implements IEvaluatePaperService {
                         }
                 ));
         List<SmallCategory> smallCategorys = evaluatePaper.getSmallCategorys();
-        Map<String,EvaluateScore> smallCategoryScoreMap = new HashMap<>();
+        Map<Integer,EvaluateScore> smallCategoryScoreMap = new HashMap<>();
         evaluateRecord.setSmallCategoryScoreMap(smallCategoryScoreMap);
         for(SmallCategory smallCategory : smallCategorys){
-            String smallCategoryId = smallCategory.getSmallCategoryId();
+            Integer smallCategoryId = smallCategory.getSmallCategoryId();
             List<Subject>  smallSubjects =   smallSubjectMap.getOrDefault(smallCategoryId,new ArrayList<>());
             EvaluateScore evaluateScore = new EvaluateScore();
             evaluateScore.setEvaluateId(evaluateRecord.getId());

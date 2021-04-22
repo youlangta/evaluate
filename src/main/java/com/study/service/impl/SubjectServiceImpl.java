@@ -15,7 +15,7 @@ public class SubjectServiceImpl implements ISubjectService {
     private SubjectRepository subjectRepository;
 
     @Override
-    public List<Subject> queryByBigCategoryId(String bigCategoryId) {
+    public List<Subject> queryByBigCategoryId(Integer bigCategoryId) {
         return subjectRepository.queryByBigCateroy(bigCategoryId);
     }
 

@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface ISubjectService {
 
-    List<Subject> queryByBigCategoryId(String bigCategoryId);
+    List<Subject> queryByBigCategoryId(Integer bigCategoryId);
 
     List<Subject> queryAll();
 

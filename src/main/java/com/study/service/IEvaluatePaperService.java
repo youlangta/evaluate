@@ -7,7 +7,7 @@ import com.study.domain.EvaluateRecord;
 public interface IEvaluatePaperService {
 
 
-    EvaluatePaper createNew(String bigCategoryId);
+    EvaluatePaper createNew(Integer bigCategoryId);
 
     EvaluateRecord insert(EvaluatePaper evaluatePaper);
 

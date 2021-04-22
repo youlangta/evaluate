@@ -14,7 +14,7 @@ import java.util.List;
 public interface SubjectRepository extends JpaRepository<Subject, Integer> {
 
     @Query("select s from Subject s where s.bigCategoryId = :bigCategoryId")
-    List<Subject> queryByBigCateroy(@Param("bigCategoryId")String bigCategoryId);
+    List<Subject> queryByBigCateroy(@Param("bigCategoryId")int bigCategoryId);
 
 
 

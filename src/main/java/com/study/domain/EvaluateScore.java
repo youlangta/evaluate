@@ -12,10 +12,18 @@ public class EvaluateScore {
     @Column(name = "evaluate_id")
     private int evaluateId;
     @Column(name = "small_category_id")
-    private String smallCategoryId;
+    private int smallCategoryId;
     @Column(name = "score")
     private int score;
 
+    public EvaluateScore() {
+    }
+
+    public EvaluateScore(int evaluateId, int smallCategoryId, int score) {
+        this.evaluateId = evaluateId;
+        this.smallCategoryId = smallCategoryId;
+        this.score = score;
+    }
 
     public int getId() {
         return id;
@@ -33,11 +41,11 @@ public class EvaluateScore {
         this.evaluateId = evaluateId;
     }
 
-    public String getSmallCategoryId() {
+    public int getSmallCategoryId() {
         return smallCategoryId;
     }
 
-    public void setSmallCategoryId(String smallCategoryId) {
+    public void setSmallCategoryId(int smallCategoryId) {
         this.smallCategoryId = smallCategoryId;
     }
 

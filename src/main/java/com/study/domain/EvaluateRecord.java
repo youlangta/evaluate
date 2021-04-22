@@ -14,7 +14,7 @@ public class EvaluateRecord {
 
     @Column(name = "big_category_id")
     @NotEmpty
-    private String bigCategoryId;
+    private int bigCategoryId;
 
     @Column(name = "evaluate_time")
     private String evaluateTime;
@@ -23,9 +23,9 @@ public class EvaluateRecord {
     private String username;
 
     @Transient
-    private Map<String,EvaluateScore> smallCategoryScoreMap;
+    private Map<Integer,EvaluateScore> smallCategoryScoreMap;
 
-    public EvaluateRecord( @NotEmpty String bigCategoryId, String evaluateTime, String username) {
+    public EvaluateRecord( @NotEmpty int bigCategoryId, String evaluateTime, String username) {
         this.bigCategoryId = bigCategoryId;
         this.evaluateTime = evaluateTime;
         this.username = username;
@@ -42,11 +42,11 @@ public class EvaluateRecord {
         this.id = id;
     }
 
-    public String getBigCategoryId() {
+    public int getBigCategoryId() {
         return bigCategoryId;
     }
 
-    public void setBigCategoryId(String bigCategoryId) {
+    public void setBigCategoryId(int bigCategoryId) {
         this.bigCategoryId = bigCategoryId;
     }
 
@@ -66,11 +66,11 @@ public class EvaluateRecord {
         this.username = username;
     }
 
-    public Map<String, EvaluateScore> getSmallCategoryScoreMap() {
+    public Map<Integer, EvaluateScore> getSmallCategoryScoreMap() {
         return smallCategoryScoreMap;
     }
 
-    public void setSmallCategoryScoreMap(Map<String, EvaluateScore> smallCategoryScoreMap) {
+    public void setSmallCategoryScoreMap(Map<Integer, EvaluateScore> smallCategoryScoreMap) {
         this.smallCategoryScoreMap = smallCategoryScoreMap;
     }
 }

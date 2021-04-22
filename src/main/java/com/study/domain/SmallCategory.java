@@ -10,9 +10,9 @@ import javax.validation.constraints.NotEmpty;
 @Table(name = "T_SMALL_CATEGORY")
 public class SmallCategory {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "small_category_id")
-    private String smallCategoryId;
+    private int smallCategoryId;
 
     @Column(name = "small_category_name")
     @NotEmpty
@@ -21,12 +21,11 @@ public class SmallCategory {
     @NotEmpty
     private String bigCategoryId;
 
-
-    public String getSmallCategoryId() {
+    public int getSmallCategoryId() {
         return smallCategoryId;
     }
 
-    public void setSmallCategoryId(String smallCategoryId) {
+    public void setSmallCategoryId(int smallCategoryId) {
         this.smallCategoryId = smallCategoryId;
     }
 
