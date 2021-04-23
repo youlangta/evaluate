@@ -1,11 +1,16 @@
 package com.study.domain;
 
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 
 /**
  * 用户
  */
+@DynamicUpdate
+@DynamicInsert
 @Entity
 @Table(name = "T_USER")
 public class User {

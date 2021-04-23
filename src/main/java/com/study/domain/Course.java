@@ -1,16 +1,21 @@
 package com.study.domain;
 
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
+import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.procedure.spi.ParameterRegistrationImplementor;
 
 import javax.persistence.*;
 import java.util.List;
-
+@DynamicUpdate
+@DynamicInsert
 @Entity
 @Table(name = "T_COURSE")
 public class Course {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "courseId")
+    @GenericGenerator(name = "courseId", strategy = "com.study.ManulInsertGenerator")
     @Column(name = "id")//, columnDefinition = "自增主键"
     private int id;
     @Column(name = "COURSE_NAME")

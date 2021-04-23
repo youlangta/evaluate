@@ -35,7 +35,10 @@ public class BigCategoryServiceImpl implements IBigCategoryService {
 
     @Override
     public void insert(BigCategory bigCategory) {
-        bigCategoryRepository.save(bigCategory);
+        BigCategory fushBigCategory =  bigCategoryRepository.saveAndFlush(bigCategory);
+        bigCategory.getSmallCategories().forEach(smallCategory -> {
+            smallCategory.setBigCategoryId(fushBigCategory.getBigCategoryId());
+        });
         smallCategoryRepository.saveAll(bigCategory.getSmallCategories());
     }
 

@@ -80,7 +80,7 @@ public class EvaluatePaperServiceImpl implements IEvaluatePaperService {
     public EvaluateRecord insert(EvaluatePaper evaluatePaper) {
         EvaluateRecord evaluateRecord = new EvaluateRecord(evaluatePaper.getBigCategoryId()
                 ,evaluatePaper.getEvaluateTime(),evaluatePaper.getUsername());
-        evaluateRecordRepository.saveAndFlush(evaluateRecord);
+        evaluateRecord = evaluateRecordRepository.saveAndFlush(evaluateRecord);
         List<Subject> subjects = evaluatePaper.getSubjects();
         Map<Integer, List<Subject>> smallSubjectMap = subjects.stream()
                 .collect(Collectors.toMap(

@@ -1,19 +1,24 @@
 package com.study.domain;
 
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
+import org.hibernate.annotations.GenericGenerator;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import java.util.Map;
-
+@DynamicUpdate
+@DynamicInsert
 @Entity
 @Table(name = "T_EVALUATE_RECORD")
 public class EvaluateRecord {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "recordId")
+    @GenericGenerator(name = "recordId", strategy = "com.study.ManulInsertGenerator")
     @Column(name = "id")//, columnDefinition = "自增主键"
     private int id;
 
     @Column(name = "big_category_id")
-    @NotEmpty
     private int bigCategoryId;
 
     @Column(name = "evaluate_time")

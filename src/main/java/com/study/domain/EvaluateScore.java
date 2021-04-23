@@ -1,12 +1,18 @@
 package com.study.domain;
 
-import javax.persistence.*;
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
+import org.hibernate.annotations.GenericGenerator;
 
+import javax.persistence.*;
+@DynamicUpdate
+@DynamicInsert
 @Entity
 @Table(name = "T_EVALUATE_SCORE")
 public class EvaluateScore {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "scoreId")
+    @GenericGenerator(name = "scoreId", strategy = "com.study.ManulInsertGenerator")
     @Column(name = "id")//, columnDefinition = "自增主键"
     private int id;
     @Column(name = "evaluate_id")

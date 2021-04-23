@@ -1,6 +1,9 @@
 package com.study.domain;
 
 import com.alibaba.fastjson.JSON;
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
+import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
@@ -8,11 +11,14 @@ import javax.validation.constraints.NotEmpty;
 /**
  * 测评试题
  */
+@DynamicUpdate
+@DynamicInsert
 @Entity
 @Table(name = "T_SUBJECT")
 public class Subject {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "subjectId")
+    @GenericGenerator(name = "subjectId", strategy = "com.study.ManulInsertGenerator")
     @Column(name = "id")//, columnDefinition = "自增主键"
     private int id;
     @Column(name = "SUBJECT_CONENT")
@@ -30,13 +36,28 @@ public class Subject {
     @Column(name = "SUBJECT_ANSWER")
     private int subjectAnswer;//试题答案
     @Column(name = "small_category_id")
-    @NotEmpty
     private int smallCategoryId;//小类
     @Column(name = "big_category_id")
-    @NotEmpty
     private int bigCategoryId;//大类
     @Transient
     private int evaluateAnswer = -1;//测评结果答案
+
+    public Subject() {
+    }
+
+    public Subject(String subjectConent, int subjectWeight, String answer0, String answer1, String answer2,
+                   String answer3, int subjectAnswer, int smallCategoryId, int bigCategoryId) {
+        this.subjectConent = subjectConent;
+        this.subjectWeight = subjectWeight;
+        this.answer0 = answer0;
+        this.answer1 = answer1;
+        this.answer2 = answer2;
+        this.answer3 = answer3;
+        this.subjectAnswer = subjectAnswer;
+        this.smallCategoryId = smallCategoryId;
+        this.bigCategoryId = bigCategoryId;
+    }
+
     public int getId() {
         return id;
     }
