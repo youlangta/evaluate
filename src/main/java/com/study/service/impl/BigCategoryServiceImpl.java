@@ -29,8 +29,11 @@ public class BigCategoryServiceImpl implements IBigCategoryService {
 
     @Override
     public void update(BigCategory bigCategory) {
-        delete(bigCategory);
-        insert(bigCategory);
+        bigCategoryRepository.save(bigCategory);
+        bigCategory.getSmallCategories().forEach(smallCategory -> {
+            smallCategory.setBigCategoryId(bigCategory.getBigCategoryId());
+        });
+        smallCategoryRepository.saveAll(bigCategory.getSmallCategories());
     }
 
     @Override
@@ -45,6 +48,6 @@ public class BigCategoryServiceImpl implements IBigCategoryService {
     @Override
     public void delete(BigCategory bigCategory) {
         bigCategoryRepository.delete(bigCategory);
-        smallCategoryRepository.deleteAll(bigCategory.getSmallCategories());
+        smallCategoryRepository.deleteByBigCategory(bigCategory.getBigCategoryId());
     }
 }
